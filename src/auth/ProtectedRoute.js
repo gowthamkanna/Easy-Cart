@@ -7,7 +7,6 @@ export const ProtectedRoute = ({children}) => {
     // let authToken = user.token;
     let authToken = localStorage.getItem("authToken");
     let userType = localStorage.getItem("userType");
-    // console.log(authToken);
     if(authToken === null) {
         return <Navigate to="/admin/login" state={{ from: location}} replace />
     }
@@ -36,7 +35,8 @@ export const LoggedInRoute = ({children}) => {
     let location = useLocation();
     let authToken = localStorage.getItem("authToken");
     if(authToken === null) {
-        return children
+        // return children
+        return <Navigate to="/admin/login" state={{ from: location}} replace />
     }
     return <Navigate to="/" state={{ from: location}} replace />
 

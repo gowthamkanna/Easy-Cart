@@ -31,27 +31,29 @@ function App() {
           <Route exact path="/login" element={<LoggedInRoute><Login /></LoggedInRoute>} /> 
           <Route exact path="/register" element={ <LoggedInRoute><Register /></LoggedInRoute>} /> 
           {/* Admin Routes */}
-          <Route exact path="/admin/login" element={<LoggedInAdminRoute><AdminLogin /></LoggedInAdminRoute>} /> 
-          <Route exact path="/admin/dashboard" element={
+          <Route path="admin">
+            <Route exact path="login" element={<LoggedInAdminRoute><AdminLogin /></LoggedInAdminRoute>} /> 
+            <Route exact path="dashboard" element={
             <ProtectedRoute>
             <Dashboard/>
             </ProtectedRoute>
           }/>
-          <Route exact path="/admin/categories" element={
+          <Route exact path="categories" element={
             <ProtectedRoute>
             <Categories/>
             </ProtectedRoute>
           }/>
-          <Route exact path="/admin/products" element={
+          <Route exact path="products" element={
             <ProtectedRoute>
             <Products />
             </ProtectedRoute>
           }/>
-          <Route exact path="/admin/reviews" element={
+          <Route exact path="reviews" element={
             <ProtectedRoute>
             <Reviews />
             </ProtectedRoute>
           }/>
+          </Route>
           <Route path="*" element={<Error404 />} />
       </Routes>
     </div>
