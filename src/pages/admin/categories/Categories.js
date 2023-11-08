@@ -87,12 +87,14 @@ export default function Categories() {
 
   useEffect(() => {
     dispatch(getCategories());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
 
   useEffect(() => {
     newFormData._id = editCategory._id;
     newFormData.name = editCategory.name;
     setAddFormData(newFormData);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [editCategory]);
 
   useEffect(() => {

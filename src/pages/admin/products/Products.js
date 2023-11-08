@@ -130,6 +130,7 @@ export default function Products() {
   // get all products when the page is loaded
   useEffect(() => {
     dispatch(getProducts());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -143,6 +144,7 @@ export default function Products() {
     // newFormData.ProductCategory = currentProduct.ProductCategory;
     setSelectedOption(currentProduct.ProductCategory);
     setAddFormData(newFormData);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentProduct]);
 
 
@@ -157,6 +159,7 @@ export default function Products() {
       }
     }
     dispatch(getProducts());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [message])
   // handle Edit Click function
   const handleEditClick = (Id) => {
