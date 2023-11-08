@@ -1,8 +1,8 @@
 import { Routes, Route } from 'react-router-dom';
-import AdminLogin from './auth/Login';
 import Dashboard from './pages/Dashboard';
 import Categories from './pages/admin/categories/Categories';
 import Products from './pages/admin/products/Products';
+import AdminLogin from './auth/AdminLogin';
 import {ProtectedRoute, ProtectedWebRoute, LoggedInRoute, LoggedInAdminRoute} from './auth/ProtectedRoute';
 // import WebRoute from './webpage/auth/WebRoute';
 import Reviews from './pages/admin/reviews/Reviews';

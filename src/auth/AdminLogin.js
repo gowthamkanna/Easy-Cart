@@ -18,12 +18,9 @@ import { useFormik } from "formik";
 import { useDispatch } from "react-redux";
 import { userLogin } from "../redux/Slice/user";
 import { toast } from "react-toastify";
-  
-  // TODO remove, this demo shouldn't need to reset the theme.
-  
-  const defaultTheme = createTheme();
 
-const AdminLogin = (props) => {
+const AdminLogin = () => {
+  
 
     const dispatch = useDispatch();
 
@@ -133,4 +130,4 @@ const AdminLogin = (props) => {
           );
 }
 
-export default AdminLogin;
+export default AdminLogin
