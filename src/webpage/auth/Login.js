@@ -7,7 +7,7 @@ import { customerLogin } from "../../redux/Slice/customer.slice";
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 
-export default function Register() {
+export default function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

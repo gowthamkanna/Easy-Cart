@@ -23,7 +23,7 @@ import { toast } from "react-toastify";
   
   const defaultTheme = createTheme();
 
-const Login = (props) => {
+const AdminLogin = (props) => {
 
     const dispatch = useDispatch();
 
@@ -133,4 +133,4 @@ const Login = (props) => {
           );
 }
 
-export default Login;
+export default AdminLogin;
