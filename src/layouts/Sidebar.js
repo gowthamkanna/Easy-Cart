@@ -13,25 +13,25 @@ import ReviewsIcon from '@mui/icons-material/Reviews';
 
 export const mainListItems = (
   <React.Fragment>
-    <ListItemButton component="a" href='/admin/dashboard'>
+    <ListItemButton component="a" href='/#/admin/dashboard'>
       <ListItemIcon>
         <DashboardIcon />
       </ListItemIcon>
       <ListItemText primary="Dashboard" />
     </ListItemButton>
-    <ListItemButton component="a" href='/admin/categories'>
+    <ListItemButton component="a" href='/#/admin/categories'>
       <ListItemIcon>
         <CategoryIcon />
       </ListItemIcon>
       <ListItemText primary="Categories" />
     </ListItemButton >
-    <ListItemButton component="a" href='/admin/products'>
+    <ListItemButton component="a" href='/#/admin/products'>
       <ListItemIcon>
       <ShoppingCartIcon />
       </ListItemIcon>
       <ListItemText primary="Products" />
     </ListItemButton>
-    <ListItemButton component="a" href='/admin/reviews'>
+    <ListItemButton component="a" href='/#/admin/reviews'>
       <ListItemIcon>
         <ReviewsIcon />
       </ListItemIcon>
