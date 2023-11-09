@@ -35,8 +35,7 @@ export const LoggedInRoute = ({children}) => {
     let location = useLocation();
     let authToken = localStorage.getItem("authToken");
     if(authToken === null) {
-        // return children
-        return <Navigate to="/admin/login" state={{ from: location}} replace />
+        return children
     }
     return <Navigate to="/" state={{ from: location}} replace />
 
