@@ -3,12 +3,7 @@ import Dashboard from "./pages/Dashboard";
 import Categories from "./pages/admin/categories/Categories";
 import Products from "./pages/admin/products/Products";
 import AdminLogin from "./auth/AdminLogin";
-import {
-  // ProtectedRoute,
-  ProtectedWebRoute,
-  LoggedInRoute,
-  // LoggedInAdminRoute,
-} from "./auth/ProtectedRoute";
+// import {ProtectedRoute, ProtectedWebRoute, LoggedInRoute, LoggedInAdminRoute} from './auth/ProtectedRoute';
 // import WebRoute from './webpage/auth/WebRoute';
 import Reviews from "./pages/admin/reviews/Reviews";
 import Home from "./webpage/Home";
@@ -32,63 +27,63 @@ function App() {
           exact
           path="/"
           element={
-            <ProtectedWebRoute>
+            // <ProtectedWebRoute>
               <Home />
-            </ProtectedWebRoute>
+            // </ProtectedWebRoute>
           }
         />
         <Route
           exact
           path="/shop"
           element={
-            <ProtectedWebRoute>
+            // <ProtectedWebRoute>
               <Shop />
-            </ProtectedWebRoute>
+            // </ProtectedWebRoute>
           }
         />
         <Route
           exact
           path="/wishlists"
           element={
-            <ProtectedWebRoute>
+            // <ProtectedWebRoute>
               <Wishlists />
-            </ProtectedWebRoute>
+            // </ProtectedWebRoute>
           }
         />
         <Route
           exact
           path="/product-details/:productID"
           element={
-            <ProtectedWebRoute>
+            // <ProtectedWebRoute>
               <ProductDetail />
-            </ProtectedWebRoute>
+            // </ProtectedWebRoute>
           }
         />
         <Route
           exact
           path="/cart"
           element={
-            <ProtectedWebRoute>
+            // <ProtectedWebRoute>
               <Cart />
-            </ProtectedWebRoute>
+            // </ProtectedWebRoute>
           }
         />
         <Route
           exact
           path="/login"
           element={
-            <LoggedInRoute>
+            // <LoggedInRoute>
               <Login />
-            </LoggedInRoute>
+            // </LoggedInRoute>
           }
         />
         <Route
           exact
           path="/register"
           element={
-            <LoggedInRoute>
+            // <LoggedInRoute>
               <Register />
-            </LoggedInRoute>
+            // </LoggedInRoute>
           }
         />
         {/* Admin Routes */}
