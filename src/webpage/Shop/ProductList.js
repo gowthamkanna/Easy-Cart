@@ -51,7 +51,7 @@ const ProductList = ({ product }) => {
         <div className="img-box">
           <Carousel {...ProductSliderConfiguration()}>
             {product.ProductImages.map((image) => (
-              <ProductImages key={image._id} image={image} />
+              <ProductImages key={image.filename} image={image} />
             ))}
           </Carousel>
         </div>

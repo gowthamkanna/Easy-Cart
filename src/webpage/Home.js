@@ -9,7 +9,7 @@ import Slider_1 from "./assets/slider/slider_1.jpeg";
 import Slider_2 from "./assets/slider/slider_2.jpeg";
 import Slider_3 from "./assets/slider/slider_3.jpeg";
 import Savings from "./assets/temp_img/saving-img.png";
-import { Link } from "react-router-dom";
+import LatestProducts from "./LatestProducts";
 // import { useNavigate } from "react-router-dom";
 
 export default function Home() {
@@ -34,49 +34,6 @@ export default function Home() {
     interval: 3000,
   });
 
-  const ProductSliderConfiguration = () => ({
-    showArrows: false,
-    showStatus: false,
-    showIndicators: false,
-    infiniteLoop: true,
-    showThumbs: false,
-    useKeyboardArrows: false,
-    autoPlay: true,
-    stopOnHover: true,
-    swipeable: true,
-    // dynamicHeight: true,
-    emulateTouch: false,
-    autoFocus: false,
-    interval: 3000,
-  });
-
-  const getOverallRating = (ratings) => {
-    var overallRating = 0;
-    for (var i = 0; i < ratings.length; i++) {
-      overallRating += ratings[i].rating;
-    }
-    var avgRating = overallRating / ratings.length;
-
-    const STAR_COUNT = 5;
-    const stars = Array.from({ length: STAR_COUNT }, () => (
-      <i className="fa-regular fa-star"></i>
-    ));
-    for (var j = 0; j < avgRating; j++) {
-      // this will loop Math.floor(avgRating) times
-      stars[j] = <i className="fa-solid fa-star"></i>;
-    }
-
-    if (avgRating % 1 !== 0) {
-      // if avgRating is a decimal, add a half star
-      stars[j - 1] = <i className="fa-solid fa-star-half-stroke"></i>;
-    }
-    return (
-      <div className="rating text-center">
-        {stars} ({ratings.length})
-      </div>
-    );
-  };
-
   useEffect(() => {
     dispatch(getLatestProducts()).then((res) => {
       setLatest(res.payload);
@@ -84,12 +41,6 @@ export default function Home() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // function redirectToProductDetail(id){
-  //   const data = { ProductID: id };
-  //   navigate('/product-details', {
-  //       state: data
-  //   });
-  // }
 
   return (
     <>
@@ -112,47 +63,11 @@ export default function Home() {
             <h2>Latest Products</h2>
           </div>
           <div className="row">
-            {latest
+          {latest
               ? latest.map((product) => (
-                  <div className="col-sm-6 col-md-4 col-lg-3" key={product._id}>
-                    <div className="box">
-                      <div className="img-box">
-                        <Carousel {...ProductSliderConfiguration()}>
-                          {product.ProductImages.map((image) => (
-                            <div key={image._id}>
-                              <img
-                                src={
-                                  process.env.REACT_APP_PRODUCT_IMAGE_URL +
-                                  "/" +
-                                  image.filename
-                                }
-                                alt={image.originalname}
-                              />
-                            </div>
-                          ))}
-                        </Carousel>
-                      </div>
-                      <div className="ration-box">
-                        {getOverallRating(product.Reviews)}
-                      </div>
-                      <div className="detail-box">
-                        {/* <h6 onClick={() => redirectToProductDetail(product._id)} className="cursor-pointer">
-                                      {product.Name}
-                                    </h6> */}
-                        <Link to={`/product-details/${product._id}`}>
-                          <h6 className="cursor-pointer">{product.Name}</h6>
-                        </Link>
-                        <h6>
-                          Price :<span>{product.SalePrice}</span>
-                        </h6>
-                      </div>
-                      <div className="new">
-                        <span>New</span>
-                      </div>
-                    </div>
-                  </div>
-                ))
-              : null}
+            <LatestProducts key={product._id} product={product} />
+            ))
+            : null}
           </div>
           <div className="btn-box">
             <a href="/shop">View All Products</a>

@@ -32,7 +32,7 @@ function App() {
           <Route exact path="/register" element={ <LoggedInRoute><Register /></LoggedInRoute>} /> 
           {/* Admin Routes */}
           <Route path="admin">
-            <Route exact path="login" element={<AdminLogin />} /> 
+            <Route exact path="login" element={<LoggedInAdminRoute><AdminLogin /></LoggedInAdminRoute>} /> 
             <Route exact path="dashboard" element={
             <ProtectedRoute>
             <Dashboard/>

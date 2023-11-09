@@ -145,3 +145,14 @@ img.img-small {
 .no-kart-products span {
   width: 100%;
 }
+ul.rating li {
+  list-style: none;
+  float: left;
+}
+ul.rating span{
+  display: flex;
+}
+ul.rating{
+  display: table;
+  margin: 7px auto;
+}

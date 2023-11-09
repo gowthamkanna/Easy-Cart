@@ -30,23 +30,6 @@ const ProductDetail = () => {
     interval: 3000,
   });
 
-  const getOverallRating = (ratings) => {
-    const STAR_COUNT = 5;
-    const stars = Array.from({ length: STAR_COUNT }, () => (
-      <i className="fa-regular fa-star"></i>
-    ));
-    for (var j = 0; j < ratings; j++) {
-      // this will loop Math.floor(avgRating) times
-      stars[j] = <i className="fa-solid fa-star"></i>;
-    }
-
-    if (ratings % 1 !== 0) {
-      // if avgRating is a decimal, add a half star
-      stars[j - 1] = <i className="fa-solid fa-star-half-stroke"></i>;
-    }
-    return <div className="rating text-center">{stars}</div>;
-  };
-
   useEffect(() => {
     dispatch(getProductsById(productID)).then((res) => {
       setCurrentProduct(res.payload);
@@ -65,7 +48,7 @@ const ProductDetail = () => {
                 <Carousel {...ProductSliderConfiguration()}>
                   {currentProduct.ProductImages
                     ? currentProduct.ProductImages.map((image) => (
-                        <div key={image._id}>
+                        <div key={image.filename}>
                           <img
                             src={
                               process.env.REACT_APP_PRODUCT_IMAGE_URL +
@@ -105,6 +88,44 @@ const ProductDetail = () => {
                 <h2>Customer Reviews</h2>
                 {currentProduct.Reviews
                   ? currentProduct.Reviews.map((review, index) => (
+                    <ReviewsList key={`review-${index}`} review={review}  />
+                    ))
+                  : "No Reviews found."}
+              </div>
+            </>
+          ) : (
+            <div className="badge bg-danger pb-3 pt-3">Reviews Not Found.</div>
+          )}
+        </div>
+      </div>
+      <Footer />
+    </>
+  );
+};
+
+export default ProductDetail;
+
+export const ReviewsList  = ({review}) =>{
+
+  const getOverallRating = (ratings) => {
+    // const STAR_COUNT = 5;
+    const stars = Array.from([1,2,3,4,5], (item) => (
+      <li key={item}><i className="fa-regular fa-star"></i></li>
+    ));
+    for (var j = 0; j < ratings; j++) {
+      // this will loop Math.floor(avgRating) times
+      stars[j] = <li key={j}><i className="fa-solid fa-star"></i></li>;
+    }
+
+    if (ratings % 1 !== 0) {
+      // if avgRating is a decimal, add a half star
+      stars[j - 1] = <li key={j-1}><i className="fa-solid fa-star-half-stroke"></i></li>;
+    }
+    return <ul className="rating text-center">{stars}</ul>;
+  };
+
+  return (
+      <>
                       <div className="card mb-2">
                         <div className="card-body">
                           <div className="row">
@@ -122,18 +143,6 @@ const ProductDetail = () => {
                           </div>
                         </div>
                       </div>
-                    ))
-                  : "No Reviews found."}
-              </div>
-            </>
-          ) : (
-            <div className="badge bg-danger pb-3 pt-3">Product Not Found.</div>
-          )}
-        </div>
-      </div>
-      <Footer />
-    </>
-  );
-};
-
-export default ProductDetail;
+      </>
+  )
+}
